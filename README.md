@@ -3,7 +3,7 @@
 <a><img src='https://files.catbox.moe/2nopyi.jpg'/></a>
 
 <p align="center">
-  <a href="https://github.com/pkdriller01"><img title="Developer" src="https://img.shields.io/badge/Author-NEXUS%20XMD-FF00FF.svg?style=big-square&logo=github" /></a>
+  <a href="https://github.com/nexustech1911/NEXUS-XMD"><img title="Developer" src="https://img.shields.io/badge/Author-NEXUS%20XMD-FF00FF.svg?style=big-square&logo=github" /></a>
 </p>
 
 <div align="center">
@@ -11,12 +11,12 @@
 [![WhatsApp Channel](https://img.shields.io/badge/Join-WhatsApp%20Channel-9ACD32?style=big-square&logo=whatsapp)](https://whatsapp.com/channel/0029Vad7YNyJuyA77CtIPX0x)
 </div>
 
- <p align="center"><img src="https://profile-counter.glitch.me/{pkdriller01}/count.svg" alt="pkdriller01 :: Visitor's Count" old_src="https://profile-counter.glitch.me/{pkdriller01}/count.svg" /></p>
+ <p align="center"><img src="https://profile-counter.glitch.me/{nexustech1911}/count.svg" alt="nexustech1911 :: Visitor's Count" old_src="https://profile-counter.glitch.me/{nexustech1911}/count.svg" /></p>
 
 
 <p align='center'>
 
- <a href="https://github.com/pkdriller01/NEXUS-XMD/fork"><img title="NEXUS-XMD" src="https://img.shields.io/badge/FORK-NEXUS XMD V1-h?color=008000&style=for-the-badge&logo=github"></a>
+ <a href="https://github.com/nexustech1911/NEXUS-XMD/fork"><img title="NEXUS-XMD" src="https://img.shields.io/badge/FORK-NEXUS XMD V1-h?color=008000&style=for-the-badge&logo=github"></a>
  
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Rockstar-ExtraBold&color=blue&lines=■+■+■+■+■+ℙ𝕃𝔼𝔸𝕊𝔼+𝔽𝕆ℝ𝕂+𝕋ℍ𝔼+ℝ𝔼ℙ𝕆)](https://git.io/typing-svg)
@@ -35,7 +35,7 @@
 
 #### 🟣 Heroku
 ---
-[![Deploy on Heroku](https://img.shields.io/badge/-DEPLOY-purple?style=for-the-badge&logo=heroku&logoColor=white)](https://dashboard.heroku.com/new?template=https://github.com/Pkdriller01/NEXUS-XMD)
+[![Deploy on Heroku](https://img.shields.io/badge/-DEPLOY-purple?style=for-the-badge&logo=heroku&logoColor=white)](https://dashboard.heroku.com/new?template=https://github.com/nexustech1911/NEXUS-XMD)
 
 
 
