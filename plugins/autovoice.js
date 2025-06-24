@@ -4,7 +4,7 @@ const { cmd } = require("../command");
 
 cmd({ on: "body" }, async (conn, m, msg, { from, body }) => {
   try {
-    const jsonUrl = "https://raw.githubusercontent.com/Pkdriller01/MY-BOTS-DATABASE-/main/autovoice.json";
+    const jsonUrl = "https://raw.githubusercontent.com/nexustech1911/NEXUS-XMD-DATA/main/autovoice.json";
     const res = await axios.get(jsonUrl);
     const voiceMap = res.data;
 
