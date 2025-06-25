@@ -7,7 +7,7 @@ const commonContextInfo = (sender) => ({
     forwardingScore: 999,
     isForwarded: true,
     forwardedNewsletterMessageInfo: {
-        newsletterJid: '',
+        newsletterJid: '120363288304618280@newsletter',
         newsletterName: 'NEXUS-BOTS SUPPORT',
         serverMessageId: 143
     }
@@ -17,19 +17,19 @@ cmd({
     pattern: "menu",
     desc: "Show all bot commands in selection menu",
     category: "menu",
-    react: "⚡",
+    react: "🪀",
     filename: __filename
 },
 async (conn, mek, m, { from, sender, pushname, reply }) => {
     try {
         let totalCommands = Object.keys(commands).length;
         const caption = `*╭────⬡ ${config.BOT_NAME} ⬡────*
-★├▢ 👤 Owner:* ${config.OWNER_NAME}
-★├▢ 🪀 Prefix:* ${config.PREFIX}
-★├▢ 🔰 Version:* 5.0.0 Beta
-★├▢ ♻️ Platform:* Heroku
-★├▢ 📵 Total Commands:* ${totalCommands}
-★├▢ 🚳 Runtime:* ${runtime(process.uptime())}
+★├▢ 👤 *Owner:* ${config.OWNER_NAME}
+★├▢ 🪀 *Prefix:* ${config.PREFIX}
+★├▢ 🔰 *Version:* 5.0.0 Beta
+★├▢ ♻️ *Platform:* Heroku
+★├▢ 📵 *Total Commands:* ${totalCommands}
+★├▢ 🚳 *Runtime:* ${runtime(process.uptime())}
 ★╰────────────────*
 
 *╭───⬡ SELECT MENU ⬡───*
