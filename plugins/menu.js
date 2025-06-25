@@ -24,12 +24,12 @@ async (conn, mek, m, { from, sender, pushname, reply }) => {
     try {
         let totalCommands = Object.keys(commands).length;
         const caption = `*╭────⬡ ${config.BOT_NAME} ⬡────*
-★├▢ 👤 *Owner:* ${config.OWNER_NAME}
-★├▢ 🪀 *Prefix:* ${config.PREFIX}
-★├▢ 🔰 *Version:* 5.0.0 Beta
-★├▢ ♻️ *Platform:* Heroku
-★├▢ 📵 *Total Commands:* ${totalCommands}
-★├▢ 🚳 *Runtime:* ${runtime(process.uptime())}
+★├▢ 👤 *𝕠𝕨𝕟𝕖𝕣:* ${config.OWNER_NAME}
+★├▢ 🪀 *𝕡𝕣𝕖𝕗𝕚𝕩:* ${config.PREFIX}
+★├▢ 🔰 *𝕧𝕖𝕣𝕤𝕚𝕠𝕟:* 5.0.0 antiban
+★├▢ ♻️ *𝕡𝕝𝕒𝕥𝕗𝕠𝕣𝕞:* Panel 
+★├▢ 📵 *𝕥𝕠𝕥𝕒𝕝 𝕔𝕠𝕞𝕞𝕒𝕟𝕕𝕤:* ${totalCommands}
+★├▢ 🚳 *𝕣𝕦𝕟𝕥𝕚𝕞𝕖:* ${runtime(process.uptime())}
 ★╰────────────────*
 
 *╭───⬡ SELECT MENU ⬡───*
