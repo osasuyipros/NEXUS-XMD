@@ -1,6 +1,6 @@
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=100&pause=1000&color=8A2BE2&center=true&width=1000&height=200&lines=NEXUS-XMD" alt="Typing SVG" /></a>
   </div>
-<a><img src='https://files.catbox.moe/2nopyi.jpg'/></a>
+<a><img src="https://files.catbox.moe/yv6bji.jpg'/></a>
 
 <p align="center">
   <a href="https://github.com/nexustech1911/NEXUS-XMD"><img title="Developer" src="https://img.shields.io/badge/Author-NEXUS%20XMD-FF00FF.svg?style=big-square&logo=github" /></a>
@@ -26,14 +26,14 @@
 
 ---
 
-### 💙 PAIRING SITE GET YOUR SESSION 🟢
+## 💙 PAIRING SITE GET YOUR SESSION 🟢
 
 [![Pair Code](https://img.shields.io/badge/Google-Pair%20Code-blue?style=for-the-badge&logo=Google)](https://xmd-nexus-pair.onrender.com)
 
 
 
 
-#### 🟣 Heroku
+## 🟣 Heroku
 ---
 [![Deploy on Heroku](https://img.shields.io/badge/-DEPLOY-purple?style=for-the-badge&logo=heroku&logoColor=white)](https://dashboard.heroku.com/new?template=https://github.com/nexustech1911/NEXUS-XMD)
 
