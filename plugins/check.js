@@ -26,18 +26,18 @@ cmd({
         // Remove any '+' signs from the code
         code = code.replace(/\+/g, '');
 
-        // Fetch all countries using the REST Countries v2 API
-        const url = "https://restcountries.com/v2/all";
+        // Fetch all countries using the REST Countries v3.1 API
+        const url = "https://restcountries.com/v3.1/all";
         const { data } = await axios.get(url);
 
         // Filter countries whose callingCodes include the given code
         const matchingCountries = data.filter(country =>
-            country.callingCodes && country.callingCodes.includes(code)
+            country.idd?.root && country.idd.suffixes?.some(suffix => (country.idd.root + suffix) === `+${code}`)
         );
 
         if (matchingCountries.length > 0) {
             const countryNames = matchingCountries
-                .map(country => `${getFlagEmoji(country.alpha2Code)} ${country.name}`)
+                .map(country => `${getFlagEmoji(country.cca2)} ${country.name.common}`)
                 .join("\n");
             reply(`✅ *Country Code*: ${code}\n🌍 *Countries*:\n${countryNames}`);
         } else {
@@ -48,4 +48,3 @@ cmd({
         reply("❌ An error occurred while checking the country code.");
     }
 });
-  
