@@ -128,7 +128,7 @@ const port = process.env.PORT || 9090;
 ╰─🛠️ *Prefix:* \`${prefix}\`
 
 > _© 𝐃𝚵𝛁𝚵𝐋𝚯𝚸𝚵𝚪 𝚸𝐊-𝐃𝚪𝚰𝐋𝐋𝚵𝚪_`;
-    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/mrid1x.jpg` }, caption: up })
+    conn.sendMessage(conn.user.id, { image: { url: `https://github.com/nexustech1911/NEXUS-XMD-DATA/raw/refs/heads/main/logo/Nexus-xmd.jpg` }, caption: up })
   }
   })
   conn.ev.on('creds.update', saveCreds)
