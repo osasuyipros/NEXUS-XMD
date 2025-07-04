@@ -449,7 +449,7 @@ async (conn, mek, m, { from, quoted, body,isCmd, command, args, q, isGroup, send
         await conn.sendMessage(
             from,
             {
-                image: { url: `https://files.catbox.moe/yek5ca.jpg` },
+                image: { url: `https://github.com/pkdriller0/NEXUS-XMD-DATA/raw/refs/heads/main/logo/quran.jpeg` },
                 caption: dec,
                 contextInfo: {
                     mentionedJid: [m.sender],
@@ -466,7 +466,7 @@ async (conn, mek, m, { from, quoted, body,isCmd, command, args, q, isGroup, send
         );
 
         await conn.sendMessage(from, {
-            audio: { url: 'https://files.catbox.moe/6j2z63.mp3' },
+            audio: { url: 'https://github.com/pkdriller0/NEXUS-XMD-DATA/raw/refs/heads/main/music/nexus.mp3' },
             mimetype: 'audio/mp4',
             ptt: false
         }, { quoted: mek });
