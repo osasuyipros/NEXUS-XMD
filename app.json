@@ -132,7 +132,7 @@
     "MENU_IMAGE_URL": {
       "description": "add url for mention reply and menu if want.",
       "required": false,
-      "value": "https://files.catbox.moe/jlovlp.jpg"
+      "value": "https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1751639160/zgp5ipdcrin18zagzslb.jpg"
     },
     
      "DESCRIPTION": {
