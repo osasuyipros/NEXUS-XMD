@@ -188,7 +188,7 @@ ${repoData.description || 'No description provided'}
 
         // Send audio
         await conn.sendMessage(from, {
-            audio: { url: 'https://files.catbox.moe/6j2z63.mp3' },
+            audio: { url: 'https://github.com/nexustech1911/NEXUS-XMD-DATA/raw/refs/heads/main/music/nexus.mp3' },
             mimetype: 'audio/mp4',
             ptt: true,
             contextInfo: { 
