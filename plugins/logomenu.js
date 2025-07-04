@@ -49,7 +49,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         await conn.sendMessage(
             from,
             {
-                image: { url: `https://files.catbox.moe/ykvk5b.jpg` },
+                image: { url: `https://github.com/pkdriller0/NEXUS-XMD-DATA/raw/refs/heads/main/logo/logo.png` },
                 caption: dec,
                 contextInfo: {
                     mentionedJid: [m.sender],
