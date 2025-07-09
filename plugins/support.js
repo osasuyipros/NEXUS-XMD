@@ -11,7 +11,7 @@ cmd({
     alias : "version",
     desc: " allmenu",
     category: "allmenu",
-    react: "🫅",
+    react: "🐉",
     filename: __filename
 }, 
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
@@ -32,16 +32,8 @@ let dec = `
 
 ⟣──────────────────⟢
 ${readMore}
-CHANNEL🛠️
 https://whatsapp.com/channel/0029Vad7YNyJuyA77CtIPX0x
 
-GROUP👥
-
-https://chat.whatsapp.com/KUc6KZ4OTAcJDkIDDGFz4O
-
-PK DRILLER *Dev🧑‍💻*
-
-wa.me/+254794146821 ?text=Support!
 
 ⟣──────────────────⟢
 
