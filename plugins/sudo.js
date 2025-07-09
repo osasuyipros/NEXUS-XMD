@@ -1,1 +1,126 @@
-const _0x5a49fc=_0x56dd;function _0x56dd(_0x5f0ce5,_0x2e10b8){const _0x36d3a2=_0x36d3();return _0x56dd=function(_0x56dd08,_0x5b17f9){_0x56dd08=_0x56dd08-0x1e8;let _0x5cdddf=_0x36d3a2[_0x56dd08];return _0x5cdddf;},_0x56dd(_0x5f0ce5,_0x2e10b8);}(function(_0x2c4aea,_0x10f0ea){const _0x1654fa=_0x56dd,_0x28af63=_0x2c4aea();while(!![]){try{const _0x5e7bf9=parseInt(_0x1654fa(0x1f2))/0x1+-parseInt(_0x1654fa(0x1ee))/0x2+-parseInt(_0x1654fa(0x1fc))/0x3*(-parseInt(_0x1654fa(0x20e))/0x4)+-parseInt(_0x1654fa(0x205))/0x5*(parseInt(_0x1654fa(0x1ff))/0x6)+parseInt(_0x1654fa(0x1ea))/0x7+-parseInt(_0x1654fa(0x1e9))/0x8+-parseInt(_0x1654fa(0x1ef))/0x9*(parseInt(_0x1654fa(0x217))/0xa);if(_0x5e7bf9===_0x10f0ea)break;else _0x28af63['push'](_0x28af63['shift']());}catch(_0x5d9489){_0x28af63['push'](_0x28af63['shift']());}}}(_0x36d3,0x824c5));function _0x36d3(){const _0x1f6d1a=['message','4423080szAADJ','❌\x20This\x20user\x20is\x20already\x20a\x20temporary\x20owner.','error','owner','296392exukkN','6378806ZRNowN','delsudo','stringify','quoted','1219190xssyVw','18eLLWau','../command','writeFileSync','610336gcRcsJ','filter','push','join','listowner','length','delowner','includes','❌\x20User\x20not\x20found\x20in\x20owner\x20list.','sender','47592JtReLl','forEach','`🤴\x20List\x20of\x20Sudo\x20Owners:`\x0a\x0a','258lfkosS','readFileSync','sendMessage','parse','path','deletesudo','30895OYTSBR','❌\x20Please\x20provide\x20a\x20number\x20or\x20tag/reply\x20a\x20user.','@s.whatsapp.net','Remove\x20a\x20temporary\x20owner','_❗This\x20Command\x20Can\x20Only\x20Be\x20Used\x20By\x20My\x20Owner!_','✅\x20Successfully\x20Added\x20User\x20As\x20Temporary\x20Owner','utf-8','https://files.catbox.moe/7zfdcq.jpg','../assets/sudo.json','204DmDAHM','existsSync','Add\x20a\x20temporary\x20owner','❌\x20No\x20temporary\x20owners\x20found.','✅\x20Successfully\x20Removed\x20User\x20As\x20Temporary\x20Owner','replace','❌\x20Error:\x20','mentionedJid'];_0x36d3=function(){return _0x1f6d1a;};return _0x36d3();}const fs=require('fs'),path=require(_0x5a49fc(0x203)),{cmd}=require(_0x5a49fc(0x1f0)),OWNER_PATH=path[_0x5a49fc(0x1f5)](__dirname,_0x5a49fc(0x20d)),ensureOwnerFile=()=>{const _0x2d763f=_0x5a49fc;!fs[_0x2d763f(0x20f)](OWNER_PATH)&&fs[_0x2d763f(0x1f1)](OWNER_PATH,JSON['stringify']([]));};cmd({'pattern':'setsudo','alias':['addsudo','addowner'],'desc':_0x5a49fc(0x210),'category':_0x5a49fc(0x1e8),'react':'😇','filename':__filename},async(_0x289aaf,_0x8d61b4,_0x5d5a60,{from:_0x5b4d2a,args:_0x11fe8f,q:_0x4f8a5e,isCreator:_0x2726ab,reply:_0x52578c})=>{const _0x3e05e2=_0x5a49fc;try{if(!_0x2726ab)return _0x52578c(_0x3e05e2(0x209));let _0x5c1dbc=_0x5d5a60[_0x3e05e2(0x215)]?.[0x0]||(_0x5d5a60[_0x3e05e2(0x1ed)]?.[_0x3e05e2(0x1fb)]??null)||_0x11fe8f[0x0]?.[_0x3e05e2(0x213)](/[^0-9]/g,'')+'@s.whatsapp.net';if(!_0x5c1dbc)return _0x52578c(_0x3e05e2(0x206));let _0x8a67f5=JSON[_0x3e05e2(0x202)](fs[_0x3e05e2(0x200)](OWNER_PATH,_0x3e05e2(0x20b)));if(_0x8a67f5[_0x3e05e2(0x1f9)](_0x5c1dbc))return _0x52578c(_0x3e05e2(0x218));_0x8a67f5[_0x3e05e2(0x1f4)](_0x5c1dbc);const _0x55eb58=[...new Set(_0x8a67f5)];fs[_0x3e05e2(0x1f1)](OWNER_PATH,JSON[_0x3e05e2(0x1ec)](_0x55eb58,null,0x2));const _0x1af780=_0x3e05e2(0x20a);await _0x289aaf[_0x3e05e2(0x201)](_0x5b4d2a,{'image':{'url':'https://files.catbox.moe/7zfdcq.jpg'},'caption':_0x1af780},{'quoted':_0x8d61b4});}catch(_0x4b5f53){console[_0x3e05e2(0x219)](_0x4b5f53),_0x52578c(_0x3e05e2(0x214)+_0x4b5f53[_0x3e05e2(0x216)]);}}),cmd({'pattern':_0x5a49fc(0x1eb),'alias':[_0x5a49fc(0x1f8),_0x5a49fc(0x204)],'desc':_0x5a49fc(0x208),'category':'owner','react':'🫩','filename':__filename},async(_0x5d138a,_0x290638,_0x15c990,{from:_0x9a3e2f,args:_0x171470,q:_0x1103a9,isCreator:_0x150336,reply:_0x354d3d})=>{const _0x5e1b4f=_0x5a49fc;try{if(!_0x150336)return _0x354d3d(_0x5e1b4f(0x209));let _0x3fd132=_0x15c990[_0x5e1b4f(0x215)]?.[0x0]||(_0x15c990[_0x5e1b4f(0x1ed)]?.[_0x5e1b4f(0x1fb)]??null)||_0x171470[0x0]?.['replace'](/[^0-9]/g,'')+_0x5e1b4f(0x207);if(!_0x3fd132)return _0x354d3d(_0x5e1b4f(0x206));let _0x5a897e=JSON[_0x5e1b4f(0x202)](fs['readFileSync'](OWNER_PATH,_0x5e1b4f(0x20b)));if(!_0x5a897e['includes'](_0x3fd132))return _0x354d3d(_0x5e1b4f(0x1fa));const _0x26e4ba=_0x5a897e[_0x5e1b4f(0x1f3)](_0x12cade=>_0x12cade!==_0x3fd132);fs[_0x5e1b4f(0x1f1)](OWNER_PATH,JSON[_0x5e1b4f(0x1ec)](_0x26e4ba,null,0x2));const _0x1f6fa9=_0x5e1b4f(0x212);await _0x5d138a['sendMessage'](_0x9a3e2f,{'image':{'url':_0x5e1b4f(0x20c)},'caption':_0x1f6fa9},{'quoted':_0x290638});}catch(_0x56b1dd){console[_0x5e1b4f(0x219)](_0x56b1dd),_0x354d3d(_0x5e1b4f(0x214)+_0x56b1dd[_0x5e1b4f(0x216)]);}}),cmd({'pattern':'listsudo','alias':[_0x5a49fc(0x1f6)],'desc':'List\x20all\x20temporary\x20owners','category':_0x5a49fc(0x1e8),'react':'📋','filename':__filename},async(_0x2a4407,_0x419cc9,_0x47a812,{from:_0x59fbb,isCreator:_0xf1121c,reply:_0x1c15be})=>{const _0x21ecc6=_0x5a49fc;try{if(!_0xf1121c)return _0x1c15be(_0x21ecc6(0x209));let _0x3a98c0=JSON[_0x21ecc6(0x202)](fs[_0x21ecc6(0x200)](OWNER_PATH,'utf-8'));_0x3a98c0=[...new Set(_0x3a98c0)];if(_0x3a98c0[_0x21ecc6(0x1f7)]===0x0)return _0x1c15be(_0x21ecc6(0x211));let _0x4abd80=_0x21ecc6(0x1fe);_0x3a98c0[_0x21ecc6(0x1fd)]((_0x2da9e3,_0x3f32e1)=>{const _0x541800=_0x21ecc6;_0x4abd80+=_0x3f32e1+0x1+'.\x20'+_0x2da9e3['replace'](_0x541800(0x207),'')+'\x0a';}),await _0x2a4407['sendMessage'](_0x59fbb,{'image':{'url':_0x21ecc6(0x20c)},'caption':_0x4abd80},{'quoted':_0x419cc9});}catch(_0x22a73e){console[_0x21ecc6(0x219)](_0x22a73e),_0x1c15be(_0x21ecc6(0x214)+_0x22a73e[_0x21ecc6(0x216)]);}});
+const fs = require("fs");
+const path = require("path");
+const { cmd } = require("../command");
+
+const OWNER_PATH = path.join(__dirname, "../assets/sudo.json");
+
+// Ensure the sudo.json file exists
+const ensureOwnerFile = () => {
+  if (!fs.existsSync(OWNER_PATH)) {
+    fs.writeFileSync(OWNER_PATH, JSON.stringify([]));
+  }
+};
+
+// Command: Add a temporary owner
+cmd({
+    pattern: "setsudo",
+    alias: ["addsudo", "addowner"],
+    desc: "Add a temporary owner",
+    category: "owner",
+    react: "😇",
+    filename: __filename
+}, async (conn, mek, m, { from, args, q, isCreator, reply }) => {
+    try {
+        if (!isCreator) return reply("_❗This Command Can Only Be Used By My Owner!_");
+
+        // Identify the target user
+        let target = m.mentionedJid?.[0] 
+            || (m.quoted?.sender ?? null)
+            || (args[0]?.replace(/[^0-9]/g, '') + "@s.whatsapp.net");
+
+        if (!target) return reply("❌ Please provide a number or tag/reply a user.");
+
+        let owners = JSON.parse(fs.readFileSync(OWNER_PATH, "utf-8"));
+
+        if (owners.includes(target)) {
+            return reply("❌ This user is already a temporary owner.");
+        }
+
+        owners.push(target);
+        const uniqueOwners = [...new Set(owners)];
+        fs.writeFileSync(OWNER_PATH, JSON.stringify(uniqueOwners, null, 2));
+
+        const successMsg = "✅ Successfully Added User As Temporary Owner";
+        await conn.sendMessage(from, {
+            image: { url: "https://files.catbox.moe/alkbe7.jpg" },
+            caption: successMsg
+        }, { quoted: mek });
+    } catch (err) {
+        console.error(err);
+        reply("❌ Error: " + err.message);
+    }
+});
+
+// Command: Remove a temporary owner
+cmd({
+    pattern: "delsudo",
+    alias: ["delowner", "deletesudo"],
+    desc: "Remove a temporary owner",
+    category: "owner",
+    react: "🫩",
+    filename: __filename
+}, async (conn, mek, m, { from, args, q, isCreator, reply }) => {
+    try {
+        if (!isCreator) return reply("_❗This Command Can Only Be Used By My Owner!_");
+
+        let target = m.mentionedJid?.[0] 
+            || (m.quoted?.sender ?? null)
+            || (args[0]?.replace(/[^0-9]/g, '') + "@s.whatsapp.net");
+
+        if (!target) return reply("❌ Please provide a number or tag/reply a user.");
+
+        let owners = JSON.parse(fs.readFileSync(OWNER_PATH, "utf-8"));
+
+        if (!owners.includes(target)) {
+            return reply("❌ User not found in owner list.");
+        }
+
+        const updated = owners.filter(x => x !== target);
+        fs.writeFileSync(OWNER_PATH, JSON.stringify(updated, null, 2));
+
+        const successMsg = "✅ Successfully Removed User As Temporary Owner";
+        await conn.sendMessage(from, {
+            image: { url: "https://files.catbox.moe/alkbe7.jpg" },
+            caption: successMsg
+        }, { quoted: mek });
+    } catch (err) {
+        console.error(err);
+        reply("❌ Error: " + err.message);
+    }
+});
+
+// Command: List all temporary owners
+cmd({
+    pattern: "listsudo",
+    alias: ["listowner"],
+    desc: "List all temporary owners",
+    category: "owner",
+    react: "📋",
+    filename: __filename
+}, async (conn, mek, m, { from, isCreator, reply }) => {
+    try {
+        if (!isCreator) return reply("_❗This Command Can Only Be Used By My Owner!_");
+
+        let owners = JSON.parse(fs.readFileSync(OWNER_PATH, "utf-8"));
+        owners = [...new Set(owners)];
+
+        if (owners.length === 0) {
+            return reply("❌ No temporary owners found.");
+        }
+
+        let listMessage = "`🤴 List of Sudo Owners:`\n\n";
+        owners.forEach((owner, i) => {
+            listMessage += `${i + 1}. ${owner.replace("@s.whatsapp.net", "")}\n`;
+        });
+
+        await conn.sendMessage(from, {
+            image: { url: "https://files.catbox.moe/alkbe7.jpg" },
+            caption: listMessage
+        }, { quoted: mek });
+    } catch (err) {
+        console.error(err);
+        reply("❌ Error: " + err.message);
+    }
+});
+
+  
