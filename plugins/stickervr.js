@@ -5,73 +5,83 @@ cmd({
     alias: ["whosonline", "onlinemembers"],
     desc: "Check who's online in the group (Admins & Owner only)",
     category: "main",
-    react: "🟢",
+    react: "🪀",
     filename: __filename
 },
 async (conn, mek, m, { from, quoted, isGroup, isAdmins, isCreator, fromMe, reply }) => {
     try {
+        // Check if the command is used in a group
         if (!isGroup) return reply("❌ This command can only be used in a group!");
+
+        // Check if user is either creator or admin
         if (!isCreator && !isAdmins && !fromMe) {
             return reply("❌ Only bot owner and group admins can use this command!");
         }
 
-        await reply("🔄 Scanning for online members... Please wait up to 30 seconds.");
+        // Inform user that we're checking
+        await reply("🔄 Scanning for online members... This may take 15-20 seconds.");
 
         const onlineMembers = new Set();
         const groupData = await conn.groupMetadata(from);
+        const presencePromises = [];
 
-        // Helper to safely check presence
-        const isOnlineState = (presence) => 
-            ['available', 'composing', 'recording', 'online', 'recently active'].includes((presence || '').toLowerCase());
-
-        // Try to subscribe and nudge presence updates multiple times
-        const maxRounds = 4;
-        const delay = (ms) => new Promise(res => setTimeout(res, ms));
-
-        for (let round = 0; round < maxRounds; round++) {
-            // Subscribe and nudge
-            await Promise.all(
-                groupData.participants.map(async participant => {
-                    try {
-                        await conn.presenceSubscribe(participant.id);
-                        await conn.sendPresenceUpdate('composing', participant.id);
-                        // (Optional: nudge with 'recording'/'available' too)
-                    } catch {}
-                })
+        // Request presence updates for all participants
+        for (const participant of groupData.participants) {
+            presencePromises.push(
+                conn.presenceSubscribe(participant.id)
+                    .then(() => {
+                        // Additional check for better detection
+                        return conn.sendPresenceUpdate('composing', participant.id);
+                    })
             );
-            await delay(2500); // wait a bit for presences to come in
+        }
 
-            // Fetch presence data if available
-            let presenceData;
-            try {
-                presenceData = await conn.fetchPresence(from);
-            } catch {}
-            if (presenceData && presenceData.presences) {
-                for (const [id, presObj] of Object.entries(presenceData.presences)) {
-                    if (isOnlineState(presObj?.lastKnownPresence)) {
-                        onlineMembers.add(id);
-                    }
+        await Promise.all(presencePromises);
+
+        // Presence update handler
+        const presenceHandler = (json) => {
+            for (const id in json.presences) {
+                const presence = json.presences[id]?.lastKnownPresence;
+                // Check all possible online states
+                if (['available', 'composing', 'recording', 'online'].includes(presence)) {
+                    onlineMembers.add(id);
                 }
             }
+        };
 
-            // Optionally, break early if enough online members found
-            if (onlineMembers.size > 2 || round === maxRounds - 1) break;
-        }
+        conn.ev.on('presence.update', presenceHandler);
 
-        // Fallback: include recent senders (from group messages, if available)
-        if (m && m.participant) onlineMembers.add(m.participant);
+        // Longer timeout and multiple checks
+        const checks = 3;
+        const checkInterval = 5000; // 5 seconds
+        let checksDone = 0;
 
-        // Format and send result
-        if (onlineMembers.size === 0) {
-            return reply("⚠️ Couldn't detect any online members. They might be hiding their presence or presence info is restricted.");
-        }
-        const onlineArray = Array.from(onlineMembers);
-        const onlineList = onlineArray.map((member, idx) => `${idx + 1}. @${member.split('@')[0]}`).join('\n');
-        const message = `🟢 *NEXUS-XMD ONLINE MEMBERS* (${onlineArray.length}/${groupData.participants.length}):\n\n${onlineList}`;
-        await conn.sendMessage(from, { 
-            text: message,
-            mentions: onlineArray
-        }, { quoted: mek });
+        const checkOnline = async () => {
+            checksDone++;
+            
+            if (checksDone >= checks) {
+                clearInterval(interval);
+                conn.ev.off('presence.update', presenceHandler);
+                
+                if (onlineMembers.size === 0) {
+                    return reply("⚠️ Couldn't detect any online members. They might be hiding their presence.");
+                }
+                
+                const onlineArray = Array.from(onlineMembers);
+                const onlineList = onlineArray.map((member, index) => 
+                    `${index + 1}. @${member.split('@')[0]}`
+                ).join('\n');
+                
+                const message = `🟢 *NEXUS-XMD ONLINE MEMBERS* (${onlineArray.length}/${groupData.participants.length}):\n\n${onlineList}`;
+                
+                await conn.sendMessage(from, { 
+                    text: message,
+                    mentions: onlineArray
+                }, { quoted: mek });
+            }
+        };
+
+        const interval = setInterval(checkOnline, checkInterval);
 
     } catch (e) {
         console.error("Error in online command:", e);
