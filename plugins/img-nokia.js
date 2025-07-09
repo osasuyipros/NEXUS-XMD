@@ -15,12 +15,12 @@ function formatBytes(bytes) {
 }
 
 cmd({
-  pattern: "rmbg",
-  alias: ["removebg"],
+  pattern: "nokia",
+  alias: ["nokiaedit"],
   react: '📸',
   desc: "Scan and remove bg from images",
   category: "img_edit",
-  use: ".rmbg [reply to image]",
+  use: ".nokia [reply to image]",
   filename: __filename
 }, async (conn, message, m,  { reply, mek }) => {
   try {
@@ -64,7 +64,7 @@ cmd({
     }
 
     // Scan the image using the API
-    const apiUrl = `https://apis.davidcyriltech.my.id/removebg?url=${encodeURIComponent(imageUrl)}`;
+    const apiUrl = `https://api.popcat.xyz/v2/nokia?image=${encodeURIComponent(imageUrl)}`;
     const response = await axios.get(apiUrl, { responseType: "arraybuffer" });
 
     if (!response || !response.data) {
@@ -75,11 +75,11 @@ cmd({
 
     await conn.sendMessage(m.chat, {
       image: imageBuffer,
-      caption: `Background removed\n\n> *Powered by JawadTechX*`
+      caption: `> *Powered by JawadTechX*`
     });
 
   } catch (error) {
-    console.error("Rmbg Error:", error);
+    console.error("Nokia Error:", error);
     reply(`An error occurred: ${error.response?.data?.message || error.message || "Unknown error"}`);
   }
 });
