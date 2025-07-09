@@ -34,7 +34,7 @@
 
 ## 🟣 Heroku
 ---
-[![Deploy on Heroku](https://img.shields.io/badge/-DEPLOY-purple?style=for-the-badge&logo=heroku&logoColor=white)](https://fork-verification-navy.vercel.app/)
+[![Deploy on Heroku](https://img.shields.io/badge/-DEPLOY-purple?style=for-the-badge&logo=heroku&logoColor=white)](https://dashboard.heroku.com/new?template=https://github.com/nexustech1911/NEXUS-XMD)
 
 
 
