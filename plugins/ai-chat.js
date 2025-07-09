@@ -88,22 +88,3 @@ async (conn, mek, m, { from, args, q, reply, react }) => {
     }
 });
 
-await conn.sendMessage(
-            from,
-            {
-                image: { url: `https://i.ibb.co/W4xhtdW8/nexus-xmd.jpg` },
-                caption: dec,
-                contextInfo: {
-                    mentionedJid: [m.sender],
-                    forwardingScore: 999,
-                    isForwarded: true,
-                    forwardedNewsletterMessageInfo: {
-                        newsletterJid: '120363288304618280@newsletter',
-                        newsletterName: '『 ☣️ NEXUS-XMD 🦖 』',
-                        serverMessageId: 143
-                    }
-                }
-            },
-            { quoted: mek }
-        );
-
