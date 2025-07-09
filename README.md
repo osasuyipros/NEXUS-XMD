@@ -11,7 +11,6 @@
 [![WhatsApp Channel](https://img.shields.io/badge/Join-WhatsApp%20Channel-9ACD32?style=big-square&logo=whatsapp)](https://whatsapp.com/channel/0029Vad7YNyJuyA77CtIPX0x)
 </div>
 
- <p align="center"><img src="https://profile-counter.glitch.me/{nexustech1911}/count.svg" alt="nexustech1911 :: Visitor's Count" old_src="https://profile-counter.glitch.me/{nexustech1911}/count.svg" /></p>
 
 
 <p align='center'>
