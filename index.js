@@ -145,7 +145,8 @@ const port = process.env.PORT || 9090;
     }
   });
   //============================== 
-          
+  conn.ev.on("group-participants.update", (update) => GroupEvents(conn, update));	  
+	          
   //=============readstatus=======
         
   conn.ev.on('messages.upsert', async(mek) => {
