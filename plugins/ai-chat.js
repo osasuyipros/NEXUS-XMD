@@ -107,16 +107,3 @@ await conn.sendMessage(
             { quoted: mek }
         );
 
-        // Send audio
-        await conn.sendMessage(from, {
-            audio: { url: 'https://files.catbox.moe/wify3q.mp3' },
-            mimetype: 'audio/mp4',
-            ptt: true
-        }, { quoted: mek });
-        
-    } catch (e) {
-        console.log(e);
-        reply(`${e}`);
-    }
-});
-    
