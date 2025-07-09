@@ -9,42 +9,42 @@ cmd({
     pattern: "update",
     alias: ["upgrade", "sync"],
     react: '🆕',
-    desc: "Update the bot to the latest version.",
+    desc: "*UPDATE THE BOT TO THE LATEST VERSION.*",
     category: "misc",
     filename: __filename
 }, async (client, message, args, { reply, isOwner }) => {
     if (!isOwner) return reply("This command is only for the bot owner.");
 
     try {
-        await reply("🔍 Checking for NEXUS-XMD updates...");
+        await reply("*🔍 CHECKING FOR UPDATES...*");
 
         // Fetch the latest commit hash from GitHub
-        const { data: commitData } = await axios.get("https://github.com/mrtech0135/NEXUSXMD/commits/main");
+        const { data: commitData } = await axios.get("https://api.github.com/repos/nexustech1911/NEXUS-XMD/commits/main");
         const latestCommitHash = commitData.sha;
 
         // Get the stored commit hash from the database
         const currentHash = await getCommitHash();
 
         if (latestCommitHash === currentHash) {
-            return reply("✅ Your NEXUS-XMD bot is already up-to-date!");
+            return reply("*✅ YOUR RAHEEM-XMD-3 BOT IS ALREADY UP-TO-DATE !*");
         }
 
-        await reply("🚀 Updating NEXUS-XMD Bot...");
+        await reply("*🚀 UPDATING NEXUS-XMD BOT...*");
 
         // Download the latest code
         const zipPath = path.join(__dirname, "latest.zip");
-        const { data: zipData } = await axios.get("https://github.com/mrtech0135/NEXUSXMD/archive/main.zip", { responseType: "arraybuffer" });
+        const { data: zipData } = await axios.get("https://github.com/nexustech1911/NEXUS-XMD/archive/main.zip", { responseType: "arraybuffer" });
         fs.writeFileSync(zipPath, zipData);
 
         // Extract ZIP file
-        await reply("📦 Extracting the latest code...");
+        await reply("*📦 EXTRACTING THE LATEST CODE...*");
         const extractPath = path.join(__dirname, 'latest');
         const zip = new AdmZip(zipPath);
         zip.extractAllTo(extractPath, true);
 
         // Copy updated files, preserving config.js and app.json
-        await reply("🔄 Replacing files...");
-        const sourcePath = path.join(extractPath, "NEXUSXMD-main");
+        await reply("*🔄 REPLACING FILES...*");
+        const sourcePath = path.join(extractPath, "NEXUS-XMD-main");
         const destinationPath = path.join(__dirname, '..');
         copyFolderSync(sourcePath, destinationPath);
 
@@ -55,7 +55,7 @@ cmd({
         fs.unlinkSync(zipPath);
         fs.rmSync(extractPath, { recursive: true, force: true });
 
-        await reply("✅ Update complete! Restarting the bot...");
+        await reply("*✅ UPDATE COMPLETE! RESTARTING THE BOT...*");
         process.exit(0);
     } catch (error) {
         console.error("Update error:", error);
