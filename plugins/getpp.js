@@ -297,29 +297,27 @@ async (conn, mek, m, { from, l, quoted, body, isCmd, command, args, q, isGroup, 
     }
 });
 cmd({
-    pattern: "getdp",
-    desc: "*ғᴇᴛᴄʜ ᴛʜᴇ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ ᴏғ ᴀ ᴛᴀɢɢᴇᴅ ᴏʀ ʀᴇᴘʟɪᴇᴅ ᴜsᴇʀ.*",
-    category: "owner",
-    filename: __filename
-}, async (conn, mek, m, { quoted, isGroup, sender, participants, reply }) => {
-    try {
-        // Determine the target user
-        const targetJid = quoted ? quoted.sender : sender;
-
-        if (!targetJid) return reply("*⚠️ ᴘʟᴇᴀsᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ғᴇᴛᴄʜ ᴛʜᴇ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ.*");
-
-        // Fetch the user's profile picture URL
-        const userPicUrl = await conn.profilePictureUrl(targetJid, "image").catch(() => null);
-
-        if (!userPicUrl) return reply("*⚠️ ɴᴏ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ ғᴏᴜɴᴅ ғᴏʀ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ ᴜsᴇʀ.*");
-
-        // Send the user's profile picture
-        await conn.sendMessage(m.chat, {
-            image: { url: userPicUrl },
-            caption: "*🖼️ ʜᴇʀᴇ ɪs ᴛʜᴇ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ ᴏғ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ ᴜsᴇʀ.*"
-        });
-    } catch (e) {
-        console.error("Error fetching user profile picture:", e);
-        reply("*❌ ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ғᴇᴛᴄʜɪɴɢ ᴛʜᴇ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ. ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ.*");
+  pattern: "getdp",
+  desc: "*ғᴇᴛᴄʜ ᴛʜᴇ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ ᴏғ ᴀ ᴛᴀɢɢᴇᴅ ᴏʀ ʀᴇᴘʟɪᴇᴅ ᴜsᴇʀ.*",
+  category: "owner",
+  filename: __filename
+}, async (conn, mek, m, { quoted, reply, mentions }) => {
+  try {
+    let targetJid;
+    if (mentions && mentions[0]) {
+      targetJid = mentions[0];
+    } else if (quoted) {
+      targetJid = quoted.sender;
+    } else {
+      return reply("*⚠️ ᴘʟᴇᴀsᴇ ᴛᴀɢ ᴏʀ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜsᴇʀ ᴛᴏ ғᴇᴛᴄʜ ᴛʜᴇ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ.*");
     }
+
+    const userPicUrl = await conn.profilePictureUrl(targetJid, "image").catch(() => null);
+    if (!userPicUrl) return reply("*⚠️ ɴᴏ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ ғᴏᴜɴᴅ ғᴏʀ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ ᴜsᴇʀ.*");
+
+    await conn.sendMessage(m.chat, { image: { url: userPicUrl }, caption: "*🖼️ ʜᴇʀᴇ ɪs ᴛʜᴇ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ ᴏғ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ ᴜsᴇʀ.*" });
+  } catch (e) {
+    console.error("Error fetching user profile picture:", e);
+    reply("*❌ ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ғᴇᴛᴄʜɪɴɢ ᴛʜᴇ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ. ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ.*");
+  }
 });
