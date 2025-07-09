@@ -297,7 +297,7 @@ async (conn, mek, m, { from, l, quoted, body, isCmd, command, args, q, isGroup, 
     }
 });
 cmd({
-    pattern: "getpp",
+    pattern: "getdp",
     desc: "*ғᴇᴛᴄʜ ᴛʜᴇ ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ ᴏғ ᴀ ᴛᴀɢɢᴇᴅ ᴏʀ ʀᴇᴘʟɪᴇᴅ ᴜsᴇʀ.*",
     category: "owner",
     filename: __filename
