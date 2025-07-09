@@ -28,18 +28,18 @@ let dec = `
 
 ⟣──────────────────⟢
 
-> ☣️ NEXUS-BOT ☣️ 
+☣️ NEXUS-BOT ☣️ 
 
 ⟣──────────────────⟢
 ${readMore}
-\ CHANNEL🛠️\
+CHANNEL🛠️
 https://whatsapp.com/channel/0029Vad7YNyJuyA77CtIPX0x
 
-\ GROUP\ 👥
+GROUP👥
 
-[https://chat.whatsapp.com/KUc6KZ4OTAcJDkIDDGFz4O]
+https://chat.whatsapp.com/KUc6KZ4OTAcJDkIDDGFz4O
 
-\ PK DRILLER\ *Dev🧑‍💻*
+PK DRILLER *Dev🧑‍💻*
 
 wa.me/+254794146821 ?text=Support!
 
