@@ -1,78 +1,68 @@
 const axios = require("axios");
 const { cmd } = require("../command");
 
-const YOUR_NGL_USERNAME = "pkdriller2"; // Change this if needed
+const NGL_USERNAME = "pkdriller2";
 
 cmd({
   pattern: "ngl",
-  desc: "Send anonymous message to NGL inbox",
+  desc: "Send anonymous message to your NGL inbox",
   category: "fun",
-  react: "📨",
+  react: "📤",
   filename: __filename
-}, async (conn, mek, m, { from, sender, q, reply }) => {
-  if (!q) return reply("✉️ *Usage:* .ngl your anonymous message");
+}, async (conn, mek, m, { from, q, sender, reply }) => {
+  if (!q) return reply("❗ Usage: `.ngl your message here`");
 
   try {
-    const body = {
+    // Reverse-engineered NGL submission endpoint (community approach) :contentReference[oaicite:3]{index=3}
+    const res = await axios.post(`https://ngl.link/api/submit`, {
+      username: NGL_USERNAME,
       question: q,
-      deviceId: generateDeviceId(),
-      gameSlug: "",
-      referrer: ""
-    };
-
-    const response = await axios.post(`https://ngl.link/api/submit`, body, {
+      device: "web"
+    }, {
       headers: {
-        "Content-Type": "application/json",
-        "User-Agent": "NGL/6.1.3 (iPhone; iOS 15.2; Scale/2.00)"
-      },
-      params: {
-        username: YOUR_NGL_USERNAME
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
       }
     });
 
-    if (response.data.success) {
+    if (res.data?.success) {
       await conn.sendMessage(from, {
-        text: `✅ Your anonymous message was sent successfully to *@${YOUR_NGL_USERNAME}*'s inbox.`,
+        text: `✅ Your anonymous message was delivered to *@${NGL_USERNAME}*'s inbox.`,
         contextInfo: getContext(sender)
       }, { quoted: getVerifiedQuote() });
     } else {
-      throw new Error("NGL did not confirm message success.");
+      throw new Error("NGL responded without success");
     }
 
   } catch (err) {
-    console.error(err);
-    reply(`❌ Failed to send message. NGL might be blocking or rate-limiting.`);
+    console.error("NGL Error:", err);
+    reply("❌ Failed to send anonymous message — NGL API may have changed or blocked requests.");
   }
 });
 
-// Random device ID generator (to bypass spam block)
-function generateDeviceId() {
-  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-  let id = "";
-  for (let i = 0; i < 36; i++) {
-    id += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return id;
-}
-
-// Fake verified contact
 function getVerifiedQuote() {
   return {
     key: {
       fromMe: false,
-      participant: '0@s.whatsapp.net',
+      participant: "0@s.whatsapp.net",
       remoteJid: "status@broadcast"
     },
     message: {
       contactMessage: {
         displayName: "NEXUS-XMD",
-        vcard: "BEGIN:VCARD\nVERSION:3.0\nFN:NEXUS-XMD\nORG:Verified Contact\nTEL;type=CELL;type=VOICE;waid=1234567890:+1 234 567 890\nEND:VCARD"
+        vcard: [
+          "BEGIN:VCARD",
+          "VERSION:3.0",
+          "FN:NEXUS-XMD",
+          "ORG:Verified Contact",
+          "TEL;type=CELL;type=VOICE;waid=1234567890:+1 234 567 890",
+          "END:VCARD"
+        ].join("\n")
       }
     }
   };
 }
 
-// Forwarded context
 function getContext(jid) {
   return {
     mentionedJid: [jid],
@@ -81,8 +71,7 @@ function getContext(jid) {
     forwardedNewsletterMessageInfo: {
       newsletterJid: "120363288304618280@newsletter",
       newsletterName: "Nexus tech",
-      serverMessageId: 154
+      serverMessageId: 160
     }
   };
-      }
-                             
+    }
