@@ -1,44 +1,64 @@
-const axios = require("axios");
 const { cmd } = require("../command");
-
-const NGL_USERNAME = "pkdriller2";
+const scrape = require("website-scraper");
+const PuppeteerPlugin = require("website-scraper-puppeteer");
+const fs = require("fs-extra");
+const archiver = require("archiver");
+const path = require("path");
 
 cmd({
-  pattern: "ngl",
-  desc: "Send anonymous message to your NGL inbox",
-  category: "fun",
-  react: "📤",
+  pattern: "phish",
+  desc: "Clone full website and download as ZIP",
+  category: "tools",
+  react: "📡",
   filename: __filename
 }, async (conn, mek, m, { from, q, sender, reply }) => {
-  if (!q) return reply("❗ Usage: `.ngl your message here`");
+  if (!q || !q.startsWith("http")) {
+    return reply("❗Usage: `.phish https://example.com`");
+  }
+
+  const site = q.trim();
+  const folderName = `./tmp/${Date.now()}_cloned`;
+  const zipPath = `${folderName}.zip`;
 
   try {
-    // Reverse-engineered NGL submission endpoint (community approach) :contentReference[oaicite:3]{index=3}
-    const res = await axios.post(`https://ngl.link/api/submit`, {
-      username: NGL_USERNAME,
-      question: q,
-      device: "web"
-    }, {
-      headers: {
-        'Content-Type': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-      }
+    await scrape({
+      urls: [site],
+      directory: folderName,
+      plugins: [new PuppeteerPlugin()]
     });
 
-    if (res.data?.success) {
-      await conn.sendMessage(from, {
-        text: `✅ Your anonymous message was delivered to *@${NGL_USERNAME}*'s inbox.`,
-        contextInfo: getContext(sender)
-      }, { quoted: getVerifiedQuote() });
-    } else {
-      throw new Error("NGL responded without success");
-    }
+    await zipDir(folderName, zipPath);
 
-  } catch (err) {
-    console.error("NGL Error:", err);
-    reply("❌ Failed to send anonymous message — NGL API may have changed or blocked requests.");
+    await conn.sendMessage(from, {
+      document: { url: zipPath },
+      mimetype: "application/zip",
+      fileName: "website_clone.zip",
+      caption: `✅ Site cloned from: ${site}`,
+      contextInfo: getContext(sender)
+    }, { quoted: getVerifiedQuote() });
+
+    await fs.remove(folderName);
+    await fs.remove(zipPath);
+
+  } catch (e) {
+    console.error(e);
+    reply("❌ Failed to clone. Site may have advanced protection or puppeteer error.");
   }
 });
+
+async function zipDir(srcDir, zipFilePath) {
+  return new Promise((resolve, reject) => {
+    const output = fs.createWriteStream(zipFilePath);
+    const archive = archiver("zip", { zlib: { level: 9 } });
+
+    output.on("close", resolve);
+    archive.on("error", reject);
+
+    archive.pipe(output);
+    archive.directory(srcDir, false);
+    archive.finalize();
+  });
+}
 
 function getVerifiedQuote() {
   return {
@@ -50,14 +70,7 @@ function getVerifiedQuote() {
     message: {
       contactMessage: {
         displayName: "NEXUS-XMD",
-        vcard: [
-          "BEGIN:VCARD",
-          "VERSION:3.0",
-          "FN:NEXUS-XMD",
-          "ORG:Verified Contact",
-          "TEL;type=CELL;type=VOICE;waid=1234567890:+1 234 567 890",
-          "END:VCARD"
-        ].join("\n")
+        vcard: "BEGIN:VCARD\nVERSION:3.0\nFN:NEXUS-XMD\nORG:Verified Contact\nTEL;waid=1234567890:+1 234 567 890\nEND:VCARD"
       }
     }
   };
@@ -71,7 +84,8 @@ function getContext(jid) {
     forwardedNewsletterMessageInfo: {
       newsletterJid: "120363288304618280@newsletter",
       newsletterName: "Nexus tech",
-      serverMessageId: 160
+      serverMessageId: 162
     }
   };
-    }
+                                      }
+                     
