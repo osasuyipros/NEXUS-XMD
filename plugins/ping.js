@@ -1,67 +1,77 @@
-const { cmd } = require('../command');
+const config = require('../config');
+const { cmd, commands } = require('../command');
 
 cmd({
-  pattern: "ping",
-  alias: ["speed", "pong"],
-  desc: "Check bot response speed",
-  category: "main",
-  react: "⚡",
-  filename: __filename
-}, async (conn, mek, m, { from, sender, reply }) => {
-  try {
-    const start = Date.now();
+    pattern: "ping",
+    alias: ["speed","pong"],use: '.ping',
+    desc: "Check bot's response time.",
+    category: "main",
+    react: "⚡",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, sender, reply }) => {
+    try {
+        const start = new Date().getTime();
 
-    // React with an emoji
-    const emojis = ['⚡', '🚀', '📡', '🔥', '💥', '📶', '🕐'];
-    const reaction = emojis[Math.floor(Math.random() * emojis.length)];
-    await conn.sendMessage(from, {
-      react: { text: reaction, key: mek.key }
-    });
+        const reactionEmojis = ['🔥', '⚡', '🚀', '💨', '🎯', '🎉', '🌟', '💥', '🕐', '🔹'];
+        const textEmojis = ['💎', '🏆', '⚡️', '🚀', '🎶', '🌠', '🌀', '🔱', '🛡️', '✨'];
 
-    const end = Date.now();
-    const ping = end - start;
+        const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
+        let textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
 
-    const text = `> *NEXUS-XMD PING:* ${ping}ms ${reaction}`;
-
-    // Send response with fake verified quote and context
-    await conn.sendMessage(from, {
-      text,
-      contextInfo: {
-        mentionedJid: [sender],
-        forwardingScore: 999,
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: "120363288304618280@newsletter",
-          newsletterName: "Nexus tech",
-          serverMessageId: 202
+        // Ensure reaction and text emojis are different
+        while (textEmoji === reactionEmoji) {
+            textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
         }
-      }
-    }, {
-      quoted: {
-        key: {
-          fromMe: false,
-          participant: '0@s.whatsapp.net',
-          remoteJid: "status@broadcast"
-        },
-        message: {
-          contactMessage: {
-            displayName: "NEXUS-XMD",
-            vcard: [
-              "BEGIN:VCARD",
-              "VERSION:3.0",
-              "FN:NEXUS-XMD",
-              "ORG:Verified Contact",
-              "TEL;waid=1234567890:+1 234 567 890",
-              "END:VCARD"
-            ].join("\n")
-          }
-        }
-      }
-    });
 
-  } catch (err) {
-    console.error("❌ Ping Error:", err);
-    reply("An error occurred while measuring ping.");
-  }
+        // Send reaction using conn.sendMessage()
+        await conn.sendMessage(from, {
+            react: { text: textEmoji, key: mek.key }
+        });
+
+        const end = new Date().getTime();
+        const responseTime = (end - start) / 1000;
+
+        const text = `> *NEXUS-XMD SPEED: ${responseTime.toFixed(2)}ms ${reactionEmoji}*`;
+
+        await conn.sendMessage(from, {
+            text,
+            contextInfo: {
+                mentionedJid: [sender],
+                forwardingScore: 999,
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: '120363288304618280@newsletter',
+                    newsletterName: "Nexus tech",
+                    serverMessageId: 143
+                }
+            }
+        }, { quoted: mek });
+
+    } catch (e) {
+        console.error("Error in ping command:", e);
+        reply(`An error occurred: ${e.message}`);
+    }
 });
-        
+
+// ping2 
+
+cmd({
+    pattern: "ping2",
+    desc: "Check bot's response time.",
+    category: "main",
+    react: "🍂",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        const startTime = Date.now()
+        const message = await conn.sendMessage(from, { text: '*PINGING...*' })
+        const endTime = Date.now()
+        const ping = endTime - startTime
+        await conn.sendMessage(from, { text: `*☣️ NEXUS-XMD SPEED : ${ping}ms*` }, { quoted: message })
+    } catch (e) {
+        console.log(e)
+        reply(`${e}`)
+    }
+})
