@@ -1,3 +1,10 @@
+//give credits to pkdriller this is my own codes
+
+
+
+
+
+
 const { cmd } = require('../command');
 const config = require('../config');
 const os = require('os');
