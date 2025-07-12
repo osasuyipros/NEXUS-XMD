@@ -3,7 +3,7 @@ const config = require('../config');
 const fetch = require('node-fetch');
 
 cmd({
-  pattern: "getpp",
+  pattern: "phish",
   category: "tools",
   filename: __filename
 }, async (message, match, m, sock) => {
