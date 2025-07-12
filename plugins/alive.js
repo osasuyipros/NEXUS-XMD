@@ -1,3 +1,5 @@
+//give credits to pkdriller 
+
 const os = require("os");
 const moment = require("moment-timezone");
 const { cmd } = require("../command");
