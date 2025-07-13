@@ -1,6 +1,6 @@
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=100&pause=1000&color=8A2BE2&center=true&width=1000&height=200&lines=NEXUS-XMD" alt="Typing SVG" /></a>
   </div>
-<a><img src='https://files.catbox.moe/meebkp.jpg'/></a>
+<a><img src='https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752417309/hnucyulxaezfuvvop1cp.jpg'/></a>
 
 <p align="center">
   <a href="https://github.com/nexustech1911/NEXUS-XMD"><img title="Developer" src="https://img.shields.io/badge/Author-NEXUS%20XMD-FF00FF.svg?style=big-square&logo=github" /></a>
