@@ -21,6 +21,8 @@ ADMIN_EVENTS: process.env.ADMIN_EVENTS || "false",
 // make true to know who dismiss or promoted a member in group
 ANTI_LINK: process.env.ANTI_LINK || "true",
 // make anti link true,false for groups 
+ANTICALL: process.env.ANTICALL || "true",
+ // make this true if you want bot to reject incoming calls
 MENTION_REPLY: process.env.MENTION_REPLY || "false",
 // make true if want auto voice reply if someone menetion you 
 MENU_IMAGE_URL: process.env.MENU_IMAGE_URL || "https://files.catbox.moe/z62ts0.jpg",
