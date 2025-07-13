@@ -33,6 +33,7 @@ const {
   const qrcode = require('qrcode-terminal')
   const StickersTypes = require('wa-sticker-formatter')
   const util = require('util')
+  const AntiCall = require('./lib/anticall');
   const { sms, downloadMediaMessage, AntiDelete } = require('./lib')
   const FileType = require('file-type');
   const axios = require('axios')
@@ -131,6 +132,10 @@ const port = process.env.PORT || 9090;
   }
   })
   conn.ev.on('creds.update', saveCreds)
+	  conn.ev.on('call', async (callData) => {
+  await AntiCall(conn, callData)
+})
+	  
 
   //==============================
 
